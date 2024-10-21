@@ -3,17 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Christine's Birthday</title>
     <style>
       * {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Roboto, Helvetica, sans-serif;
+      }
+      img {
+        object-fit: cover;
+      }
+      .btn-offset {
+        position: absolute;
+        top: -2rem;
+        left: 0;
       }
       html,
-      body {
+      body,
+      .sect-1,
+      .sect-2 {
         height: 100%;
         position: relative;
       }
-
+      p {
+        padding: 0.5rem;
+      }
+      button {
+        background: none;
+        border: 2px solid;
+        box-shadow: -2px 2px 0 0;
+        margin-right: 0.5rem;
+      }
       .flip-card {
         margin: 0 auto;
         transform: translateY(100%);
@@ -33,10 +57,6 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       }
 
-      /* .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-      } */
-
       .flip-card-front,
       .flip-card-back {
         position: absolute;
@@ -52,33 +72,149 @@
       }
 
       .flip-card-back {
-        background-color: #2980b9;
-        color: white;
+        background-color: #f6e5e8;
+        color: #f67b8a;
         transform: rotateY(180deg);
+      }
+      .sect-2 {
+        display: none;
+      }
+      .swipe-in {
+        animation: swipeIn 1s ease forwards;
+        display: flex;
+        align-items: center;
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        position: fixed;
+        top: 0;
+      }
+      .paper {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        min-width: 400px;
+        height: 480px;
+        margin: 0 auto;
+        background: #fafafa;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+        font-weight: 400;
+        overflow: hidden;
+      }
+      .paper:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        background: radial-gradient(#575450 6px, transparent 7px) repeat-y;
+        background-size: 30px 30px;
+        border-right: 3px solid #d44147;
+        box-sizing: border-box;
+      }
+
+      .paper-content {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        bottom: 30px;
+        left: 60px;
+        background: linear-gradient(
+          transparent,
+          transparent 28px,
+          #91d1d3 28px
+        );
+        background-size: 30px 30px;
+      }
+      .paper-content > p {
+        margin-top: 1.5px;
+        padding: 0;
+      }
+      li {
+        margin-left: 0.5rem;
+      }
+      /* li {
+        height: 18px;
+        line-height: 32px;
+      } */
+
+      .paper-content textarea {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        line-height: 30px;
+        padding: 0 10px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        font-weight: bold;
+        font-size: 18px;
+        box-sizing: border-box;
+        z-index: 1;
+        font-family: "Agdasima", sans-serif;
+      }
+
+      @keyframes swipeIn {
+        from {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
     </style>
   </head>
 
   <body>
-    <div class="flip-card" onclick="flipCard()">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img
-            src="https://www.w3schools.com/howto/img_avatar.png"
-            alt="Avatar"
-            style="width: 300px; height: 300px"
-          />
-          <!-- <button>Click to flip for more !</button> -->
-        </div>
-        <div class="flip-card-back">
-          <h1>Happy Birthday Christine's</h1>
-          <p>
-            This is an e-card invitation , would like you accept whether you
-            would like to go on a simple adventure with me for your bithday
-          </p>
+    <section class="sect-1">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img
+              src="./img-1.JPG"
+              alt="Avatar"
+              style="width: 300px; height: 300px"
+            />
+            <button onclick="flipCard()">Click to flip for more !</button>
+          </div>
+          <div class="flip-card-back">
+            <button class="btn-offset" onclick="flipCard()">↩ Back</button>
+            <h1>Happy Birthday Christine's</h1>
+            <p>
+              This is an e-card invitation , Would you like to accept whether to
+              go simple adventure with me for your bithday.
+            </p>
+            <button onclick="redirect()">YES</button>
+            <button onclick="redirect()">YES</button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section class="sect-2">
+      <div class="paper">
+        <div class="paper-content">
+          <p>Schedule</p>
+          <li>Random Sweet Breakfast Dine with me - 8am</li>
+          <br />
+          <li>Free n Ez & Home Lunch - 1pm</li>
+          <br />
+          <li style="margin-top: -0.5rem">
+            Dinner outside - 6pm (ready at 5pm)
+          </li>
+          <br />
+          <li style="margin-top: -0.5rem">Spend with me</li>
+          <br />
+          <p style="margin-top: -0.5rem">-- END OF DAY --</p>
+        </div>
+      </div>
+    </section>
     <script>
       let isFlipped = false;
       function flipCard() {
@@ -86,6 +222,13 @@
         document.querySelector(".flip-card-inner").style.transform = isFlipped
           ? "rotateY(180deg)"
           : "none";
+      }
+      function redirect() {
+        var sect_1 = document.querySelector(".sect-1");
+        var sect_2 = document.querySelector(".sect-2");
+        console.log("hi");
+        sect_2.classList.add("swipe-in");
+        sect_1.classList.add("swipe-out");
       }
     </script>
   </body>
